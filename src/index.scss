@@ -1,0 +1,90 @@
+
+
+html[dir="rtl"] {
+  // font-family: "Tajawal", sans-serif;
+  font-family: "Cairo", sans-serif;
+}
+html[dir="ltr"] {
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  background: #ffffff;
+  // background: rgb(209, 210, 201);
+  width: 100%;
+  background-position: no-repeat;
+  background-size: cover;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+.h1 {
+  font-weight: 900;
+}
+
+.h2 {
+  font-weight: 500;
+}
+
+.head {
+  font-size: 20px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.min-title {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+// -------- Fonts Media Query
+@media (min-width: 300px) {
+  .h1 {
+    font-size: 22px;
+  }
+  .h2 {
+    font-size: 20px;
+  }
+  .head {
+    font-size: 16px;
+  }
+}
+@media (min-width: 900px) {
+  .h1 {
+    font-size: 28px;
+  }
+  .h2 {
+    font-size: 40px;
+  }
+  .head {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1200px) {
+  .h1 {
+    font-size: 42px;
+  }
+  .h2 {
+    font-size: 48px;
+  }
+  .head {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
