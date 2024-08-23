@@ -1,3 +1,5 @@
+// React-Router-dom
+import { Link } from "react-router-dom"
 // Utils
 import { truncateWord } from "../../utils/helper"
 // -------------------------------------------------------------------
@@ -5,9 +7,9 @@ import { truncateWord } from "../../utils/helper"
 const SkillItem = (props) => {
     // -------- JSX Code ---------
     return (
-        <div key={props?.key} {...props}>
+        <Link to={props?.path} key={props?.key} {...props}>
             {truncateWord(props?.name, 20)}
-        </div>
+        </Link>
     )
 }
 

@@ -1,5 +1,9 @@
 // Components
-import { JobCard, Layout, PageTitle, SideContent, JobAndSkillCard } from "../../components";
+import {
+  JobCard,
+  Layout,
+  PageTitle,
+} from "../../components";
 //-------------------------------------------------------
 
 export const jobData = {
@@ -32,18 +36,11 @@ export const jobData = {
   }
 }
 
-
 const HomePage = () => {
-
-
   // ---- JSX Code ----
   return (
     <Layout showSearch={true} >
-
-      <div style={{ margin: '30px 0px 48px' }}>
-        <PageTitle title='All Jobs' count={152} />
-      </div>
-
+      <PageTitle title='All Jobs' count={152} />
       <div className="job-page-container">
         <JobCard jobData={jobData} />
         <JobCard jobData={jobData} />
