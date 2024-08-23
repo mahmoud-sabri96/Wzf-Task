@@ -1,15 +1,13 @@
-
-
+// Component
+import { Layout } from "../../components"
 // ------------------------------------------------
 
-
 const SearchPage = () => {
-
     // ------ JSX Code -----
     return (
-        <div>
-            serach dsfs
-        </div>
+        <Layout showSearch={true} >
+            Search
+        </Layout>
     )
 }
 
