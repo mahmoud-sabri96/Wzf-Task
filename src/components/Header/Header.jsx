@@ -12,9 +12,9 @@ const Header = ({ showSearch }) => {
     return (
         <>
             <nav className='navbar'>
-                <h3 className='logo'>
+                <Link className='logo' to={path?.home}>
                     JobsNow
-                </h3>
+                </Link>
                 <ul className='tabs'>
                     <li>
                         <Link

@@ -3,13 +3,15 @@ import { useState } from "react"
 import { MdOutlineSearch } from "react-icons/md";
 // -------------------------------------------------
 
-
 const SearchBox = () => {
+
     const [searchQuery, setSearchQuery] = useState('')
+
     const handleSearch = (e) => {
         console.log(e.target.value)
         setSearchQuery(e.target.value)
     }
+
     // ------ SearchBox --------
     return (
         <div className="search-box-holder">

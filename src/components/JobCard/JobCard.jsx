@@ -26,11 +26,10 @@ const JobCard = ({ jobData }) => {
                     />
                 )}
             </div>
-
+            
             <Link className='job-card-link' to={`${path?.jobInfo}/${jobData?.id}`}>
-                view job details
+                View Job details
             </Link>
-
         </div>
     )
 }
