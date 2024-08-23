@@ -3,14 +3,14 @@
 // ------------------------------------------------
 
 
-const FavouritePage = () => {
+const SearchPage = () => {
 
     // ------ JSX Code -----
     return (
         <div>
-
+            serach dsfs
         </div>
     )
 }
 
-export default FavouritePage
+export default SearchPage

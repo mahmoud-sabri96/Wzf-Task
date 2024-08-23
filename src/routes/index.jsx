@@ -1,15 +1,18 @@
 // React-Router-Dom
 import { useRoutes } from "react-router-dom";
 // Element
-import { Homepage } from "./elements";
-// import AuthUserGuard
-//     from "./route-guard/AuthUserGuard";
+import { HomePage, JobInfoPage, SearchPage } from "./elements";
+import { path } from "./pathes";
+import SkillInfoPage from "../pages/SkillInfoPage";
+
 //--------------------------------------------------
 
 const Router = () => {
     return useRoutes([
-        // { path: `${path?.verificationEmail}/:id`, element: <VerificationEmailPage /> },
-        { path: "/", element: < Homepage />},
+        { path: `/${path?.home}`, element: < HomePage /> },
+        { path: `/${path?.search}`, element: < SearchPage /> },
+        { path: `/${path?.jobInfo}/:id`, element: < JobInfoPage /> },
+        { path: `/${path?.skillInfo}/:id`, element: < SkillInfoPage /> },
     ]);
 };
 

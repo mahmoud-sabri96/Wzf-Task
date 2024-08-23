@@ -1,3 +1,6 @@
 export const path = {
-    home: '/',
+    home: '/jobs',
+    search: '/jobs/search',
+    jobInfo: '/job',
+    skillInfo: '/skill',
 } 

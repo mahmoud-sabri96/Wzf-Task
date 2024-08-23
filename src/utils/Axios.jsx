@@ -1,20 +1,11 @@
 import axios from "axios";
-// Toast 
-// import { errorToast, successToast } from "./toastMessage";
-// Cookies
-import Cookies from "js-cookie";
-// import { toast } from "react-toastify";
-// import toast from "react-hot-toast";
-// const host = window.location?.origin
-// ---------------------------------------
-const access_token = Cookies.get('access_token')
+//------------------------------------------------------
+
 
 const axiosInstance = axios.create({
-    baseURL: "https://dashboard.tamrah-one.com/",
+    baseURL: "https://skills-api-zeta.vercel.app",
     headers: {
-        API_SECRET_KEY: 'TamrahEcommerce@123',
-        Authorization: `Bearer ${access_token}`
-        // LANGUAGE: localStorage.getItem('i18nextLng')
+        LANGUAGE: 'en'
     },
 });
 
