@@ -14,7 +14,6 @@ axiosInstance.interceptors.response.use(
         return response?.data
     },
     (error) => {
-        console.log(error)
         if (error?.response?.status === 404) {
             alert('Not Found this Id');
             window.location.replace(path.home)
