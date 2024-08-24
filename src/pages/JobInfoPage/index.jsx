@@ -22,7 +22,7 @@ const JobInfoPage = () => {
 
     const dispatch = useDispatch()
 
-    const { JobInfo } = useSelector(state => state.jobs)
+    const { isLoadingJobInfo, JobInfo } = useSelector(state => state.jobs)
 
     useEffect(() => {
         const dispatchGetJobById = dispatch(getJobById(id))
@@ -30,11 +30,11 @@ const JobInfoPage = () => {
         return () => dispatchGetJobById.abort()
     }, [id])
 
+    if (isLoadingJobInfo) return <Layout><h2 style={{ color: '#0046b2' }} >Loading Data ...</h2></Layout>
 
     // ------ JSx Code -------
     return (
         <Layout showSearch={false} >
-
             <PageTitle title={JobInfo?.attributes?.title} />
 
             <section className="info-page-container" >
@@ -55,14 +55,13 @@ const JobInfoPage = () => {
                 <div className="info-right-side">
                     <SideContent
                         routeType='jobs'
-                        title='Related Jobs :'
+                        title='Related Jobs : (No related Job)'
                         // No Related Jobe in response of jobById api
                         linksList={JobInfo?.relationships?.skills}
                     />
                 </div>
 
             </section>
-
         </Layout>
     )
 }

@@ -1,8 +1,12 @@
 // Slice
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 // Services
-import { getAllJobs, getJobById, getSkillById, searchJobsByName } from "../services/jobs_services";
-
+import {
+    getAllJobs,
+    getJobById,
+    getSkillById,
+    searchJobsByName
+} from "../services/jobs_services";
 // -----------------------------------------------------------------------
 
 const slice = createSlice({
@@ -16,15 +20,20 @@ const slice = createSlice({
         isLoadingSkillInfo: false,
         skillInfo: {},
         isLoadingSearchResult: false,
-        searchResuts: [],
+        searchResults: [],
         searchQuery: '',
+        searchHistory: []
 
     },
 
     reducers: {
         setSearchQuery: (state, action) => {
-            console.log(action.payload)
             state.searchQuery = action.payload
+        },
+        updateSearchHistory: (state, action) => {
+            const currentHistory = current(state).searchHistory
+            // using reverse to make last item in history  is the first index
+            state.searchHistory = [...currentHistory, action.payload].reverse()
         }
     },
 
@@ -38,7 +47,7 @@ const slice = createSlice({
                 state.allJobsList = action.payload.data.jobs
             })
             .addCase(getAllJobs.pending, (state) => {
-                state.isLoadingSettings = true;
+                state.isLoadingAllJobs = true;
             })
             .addCase(getAllJobs.rejected, (state) => {
                 state.isLoadingAllJobs = false;
@@ -74,7 +83,7 @@ const slice = createSlice({
         builder
             .addCase(searchJobsByName.fulfilled, (state, action) => {
                 state.isLoadingSearchResult = false;
-                state.searchResuts = action.payload.data?.jobs
+                state.searchResults = action.payload.data?.jobs
             })
             .addCase(searchJobsByName.pending, (state) => {
                 state.isLoadingSearchResult = true;
@@ -91,4 +100,4 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-export const { setSearchQuery } = slice.actions;
+export const { setSearchQuery, updateSearchHistory } = slice.actions;

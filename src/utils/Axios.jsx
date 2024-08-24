@@ -1,6 +1,6 @@
 import axios from "axios";
+import { path } from "../routes/pathes";
 //------------------------------------------------------
-
 
 const axiosInstance = axios.create({
     baseURL: "https://skills-api-zeta.vercel.app",
@@ -11,23 +11,15 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
     (response) => {
-        // if (response?.status === 200 && response?.data?.status === true) {
-        //     // successToast(response?.data?.message); 
-        //     successToast('Sucessfull '); 
-        // }
-        // if (response?.status === 200 && response?.data?.status === false) {
-        //     // errorToast(response?.data?.message);
-        //     errorToast('Something went wrong');
-        // }
         return response?.data
     },
     (error) => {
-        // console.log(error)
-        // if (error?.message !== 'canceled') {
-            // errorToast('Something went wrong');
-            return Promise.reject((error.response && error.response.data) || 'Something went wrong')
-        // }
-        // errorToast(error?.response?.data?.message || 'Something went wrong');
+        console.log(error)
+        if (error?.response?.status === 404) {
+            alert('Not Found this Id');
+            window.location.replace(path.home)
+        }
+        return Promise.reject((error.message) || 'Something went wrong')
     }
 );
 

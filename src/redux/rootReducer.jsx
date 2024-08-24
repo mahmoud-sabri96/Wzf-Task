@@ -18,7 +18,7 @@ const jobsPersistConfig = {
     key: "jobs",
     storage,
     keyPrefix: "redux-",
-    whitelist: [],
+    whitelist: ['searchHistory'],
 };
 
 

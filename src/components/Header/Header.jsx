@@ -40,7 +40,7 @@ const Header = ({ showSearch }) => {
 
                 </ul>
             </nav>
-            {showSearch && <SearchBox  />}
+            
         </>
     )
 }

@@ -4,50 +4,30 @@ import {
   JobCard,
   Layout,
   PageTitle,
+  SearchBox,
 } from "../../components";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 // Services
-import { getAllJobs } from "../../redux/services/jobs_services";
+import {
+  getAllJobs,
+  searchJobsByName
+} from "../../redux/services/jobs_services";
+// Slices
+import { updateSearchHistory } from "../../redux/slices/jobs_slice";
 //-------------------------------------------------------
 
-export const jobData = {
-  "id": "9b92abe6-3bf3-4cc6-8744-4de0c8af0630",
-  "type": "job",
-  "attributes": {
-    "title": "Engineering Manager"
-  },
-  "relationships": {
-    "skills": [
-      {
-        "id": "f4a6f053-2cac-44fc-a87a-5368d7ca46ed"
-      },
-      {
-        "id": "9f0a0811-4a8e-4c8a-b4ce-adc9267b1cf3"
-      },
-      {
-        "id": "e255b986-fca7-4b1c-ba4e-b16497da4477"
-      },
-      {
-        "id": "f4a6f053-2cac-44fc-a87a-5368d7ca46ed"
-      },
-      {
-        "id": "9f0a0811-4a8e-4c8a-b4ce-adc9267b1cf3"
-      },
-      {
-        "id": "e255b986-fca7-4b1c-ba4e-b16497da4477"
-      }
-    ]
-  }
-}
 
 const HomePage = () => {
 
   const dispatch = useDispatch()
 
-  const { allJobsList, allJobsData } = useSelector(state => state.jobs)
+  const { isLoadingAllJobs, allJobsList, allJobsData } = useSelector(state => state.jobs)
 
- 
+  const handleSearch = (searchTerm) => {
+    dispatch(searchJobsByName(searchTerm))
+    dispatch(updateSearchHistory(searchTerm))
+  }
 
   useEffect(() => {
     const dispatchGetAllJobs = dispatch(getAllJobs({}))
@@ -57,14 +37,22 @@ const HomePage = () => {
 
   // ---- JSX Code ----
   return (
-    <Layout showSearch={true}  >
+    <Layout >
+      <SearchBox onSearch={handleSearch} />
       <PageTitle title='All Jobs' count={allJobsData?.meta?.count} />
       <div className="job-page-container">
-        {allJobsList?.map(job =>
-          <Fragment key={job?.id} >
-            <JobCard jobData={job} />
-          </Fragment>
-        )}
+
+        {isLoadingAllJobs && <h2 style={{ color: '#0046b2' }} >Loading Data ...</h2>}
+
+        {(!isLoadingAllJobs && !allJobsList?.length) && <h2 style={{ color: '#0046b2' }}>No Data Found</h2>}
+
+        {(allJobsList?.length > 0 && !isLoadingAllJobs) &&
+          allJobsList?.map(job =>
+            <Fragment key={job?.id} >
+              <JobCard jobData={job} />
+            </Fragment>
+          )}
+
       </div>
     </Layout>
   )

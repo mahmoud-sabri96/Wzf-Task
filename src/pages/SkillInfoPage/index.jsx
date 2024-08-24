@@ -12,22 +12,26 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 // Services
 import { getSkillById } from "../../redux/services/jobs_services"
-// ---------------------------------------------------------
+// -------------------------------------------------------------------
+
 const SkillInfoPage = () => {
+
     const params = useParams()
 
     const { id } = params
 
     const dispatch = useDispatch()
 
-    const { skillInfo } = useSelector(state => state.jobs)
-
+    const { isLoadingSkillInfo, skillInfo } = useSelector(state => state.jobs)
 
     useEffect(() => {
         const dispatchGetSkillById = dispatch(getSkillById(id))
         // to cancel request when the user leave the page
         return () => dispatchGetSkillById.abort()
     }, [id])
+
+    if (isLoadingSkillInfo) return <Layout><h2 style={{ color: '#0046b2' }} >Loading Data ...</h2></Layout>
+
     // ----- JSX Code ------
     return (
         <Layout showSearch={false} >
@@ -47,9 +51,7 @@ const SkillInfoPage = () => {
                         </p>
                     </div>
 
-                    <h3 className="sub-title ">
-                        Related Jobs :
-                    </h3>
+                    <h3 className="sub-title "> Related Jobs : </h3>
 
                     {skillInfo?.relationships?.jobs.map(job =>
                         <Fragment key={job?.id}>

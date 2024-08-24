@@ -14,7 +14,7 @@ const Router = () => {
         { path: `/${path?.search}/:id`, element: < SearchPage /> },
         { path: `/${path?.jobInfo}/:id`, element: < JobInfoPage /> },
         { path: `/${path?.skillInfo}/:id`, element: < SkillInfoPage /> },
-        { path: `*`, element: <h1 style={{textAlign:'center'}}>Not found Page</h1> },
+        { path: `*`, element: <h1 style={{textAlign:'center'}}>Not found Page 404 </h1> },
     ]);
 };
 
