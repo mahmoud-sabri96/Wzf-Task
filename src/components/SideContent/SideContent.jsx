@@ -32,7 +32,10 @@ const SideContent = ({ routeType, title, linksList }) => {
                                             color="#000"
                                             style={{ margin: '5px' }}
                                         />
-                                        {truncateWord(link?.id, 15)}
+                                        No job Name
+                                        <span style={{ fontSize: '10px', marginLeft: '5px' }}>
+                                            {truncateWord(link?.id, 8)}
+                                        </span>
                                     </Link>
                                     :
                                     routeType === 'skills' ?
@@ -45,7 +48,10 @@ const SideContent = ({ routeType, title, linksList }) => {
                                                 color="#000"
                                                 style={{ margin: '5px' }}
                                             />
-                                            {truncateWord(link?.id, 15)}
+                                            No Skill Name 
+                                            <span style={{ fontSize: '10px', marginLeft: '5px' }}>
+                                                {truncateWord(link?.id, 8)}
+                                            </span>
                                         </Link>
                                         :
                                         <Link
@@ -57,7 +63,10 @@ const SideContent = ({ routeType, title, linksList }) => {
                                                 color="#000"
                                                 style={{ margin: '5px' }}
                                             />
-                                            {truncateWord(link?.id, 15)}
+                                            No Name
+                                            <span style={{ fontSize: '12px', marginLeft: '5px' }}>
+                                                {truncateWord(link?.id, 8)}
+                                            </span>
                                         </Link>
                             }
                         </li>

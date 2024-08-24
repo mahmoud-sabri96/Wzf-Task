@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import SkillItem from '../SkillItem/SkillItem'
 // Routes Pathes
 import { path } from '../../routes/pathes'
+import { Fragment } from 'react'
 // --------------------------------------------------------------
 
 const JobCard = ({ jobData }) => {
     // ------- JSX Code ----------
     return (
-        <div className='job-card'>
+        <div className='job-card' >
 
             <Link to={`${path?.jobInfo}/${jobData?.id}`} className='job-card-title'>
                 {jobData?.attributes?.title}
@@ -19,12 +20,14 @@ const JobCard = ({ jobData }) => {
 
             <div className='job-skills-holder'>
                 {jobData?.relationships?.skills?.map(skill =>
-                    <SkillItem
-                        path={`${path?.skillInfo}/${skill?.id}`}
-                        className="skill-item"
-                        key={skill?.id}
-                        name={skill?.id}
-                    />
+                    <Fragment key={skill?.id}>
+                        <SkillItem
+                            path={`${path?.skillInfo}/${skill?.id}`}
+                            className="skill-item"
+
+                            name={skill?.id}
+                        />
+                    </Fragment>
                 )}
             </div>
 

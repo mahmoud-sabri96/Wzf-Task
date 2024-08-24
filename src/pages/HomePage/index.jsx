@@ -1,9 +1,14 @@
+import { Fragment, useEffect } from "react";
 // Components
 import {
   JobCard,
   Layout,
   PageTitle,
 } from "../../components";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+// Services
+import { getAllJobs } from "../../redux/services/jobs_services";
 //-------------------------------------------------------
 
 export const jobData = {
@@ -37,18 +42,30 @@ export const jobData = {
 }
 
 const HomePage = () => {
+
+  const dispatch = useDispatch()
+
+  const { allJobsList, allJobsData } = useSelector(state => state.jobs)
+
+ 
+
+  useEffect(() => {
+    const dispatchGetAllJobs = dispatch(getAllJobs({}))
+    // to cancel request when the user leave the page
+    return () => dispatchGetAllJobs.abort()
+  }, [])
+
   // ---- JSX Code ----
   return (
-    <Layout showSearch={true} >
-      <PageTitle title='All Jobs' count={152} />
+    <Layout showSearch={true}  >
+      <PageTitle title='All Jobs' count={allJobsData?.meta?.count} />
       <div className="job-page-container">
-        <JobCard jobData={jobData} />
-        <JobCard jobData={jobData} />
-        <JobCard jobData={jobData} />
-        <JobCard jobData={jobData} />
-        <JobCard jobData={jobData} />
+        {allJobsList?.map(job =>
+          <Fragment key={job?.id} >
+            <JobCard jobData={job} />
+          </Fragment>
+        )}
       </div>
-
     </Layout>
   )
 }

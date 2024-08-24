@@ -11,11 +11,17 @@ const JobAndSkillCard = ({ data, showDiscription = false, routeType }) => {
             {
                 routeType === 'jobs' ?
                     <Link className='job-skill-card-title' to={`${path?.jobInfo}/${data?.id}`} >
-                        Airline Pilots, Copilots, and Flight Engineers
+                        No Job Name {' '}
+                        <span style={{ fontSize: '12px' }}>
+                            ({data?.id})
+                        </span>
                     </Link>
                     :
                     <Link className='job-skill-card-title' to={`${path?.skillInfo}/${data?.id}`} >
-                        Operation and control
+                        No Skill Name {' '}
+                        <span style={{ fontSize: '12px' }}>
+                            ({data?.id})
+                        </span>
                     </Link>
             }
 

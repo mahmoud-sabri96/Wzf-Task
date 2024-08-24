@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 // slices
-import settingsReducer from "./slices/settingsSlice";
+import jobsReducer from "./slices/jobs_slice";
 // ----------------------------------------------------------
 
 const rootPersistConfig = {
@@ -14,8 +14,8 @@ const rootPersistConfig = {
     whitelist: [],
 };
 
-const settingPersistConfig = {
-    key: "setting",
+const jobsPersistConfig = {
+    key: "jobs",
     storage,
     keyPrefix: "redux-",
     whitelist: [],
@@ -23,7 +23,7 @@ const settingPersistConfig = {
 
 
 const rootReducer = combineReducers({
-    settings: persistReducer(settingPersistConfig,settingsReducer)
+    jobs: persistReducer(jobsPersistConfig, jobsReducer)
 });
 
 export { rootPersistConfig, rootReducer };

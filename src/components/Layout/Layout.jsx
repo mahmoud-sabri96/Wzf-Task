@@ -3,10 +3,12 @@ import React from 'react'
 import Header from '../Header/Header'
 // ----------------------------------------------------------
 const Layout = ({ showSearch, children }) => {
+
+
     // ------- JSX Code --------
     return (
         <>
-            <Header showSearch={showSearch} />
+            <Header showSearch={showSearch}  />
             <main
                 className='layout-container'
                 style={{ width: '100%', minHeight: '100vh', }}>
