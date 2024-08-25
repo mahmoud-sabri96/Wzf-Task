@@ -56,7 +56,6 @@ const HomePage = () => {
       {(!isLoadingAllJobs && !allJobsList?.length) && <h2 style={{ color: '#0046b2' }}>No Data Found</h2>}
 
       {(allJobsList?.length > 0 && !isLoadingAllJobs) &&
-
         <InfiniteScroll
           dataLength={allJobsData?.meta?.count}
           next={fetchMoreData}
